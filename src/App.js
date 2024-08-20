@@ -70,10 +70,8 @@ const Placeholder = styled.img`
 
 function App() {
 	const [searchQuery, updateSearchQuery] = useState("");
-
 	const [movieList, updateMovieList] = useState([]);
 	const [selectedMovie, onMovieSelect] = useState();
-
 	const [timeoutId, updateTimeoutId] = useState();
 
 	const fetchData = async (searchString) => {
@@ -90,15 +88,22 @@ function App() {
 		const timeout = setTimeout(() => fetchData(e.target.value), 500);
 		updateTimeoutId(timeout);
 	};
+
 	return (
 		<Container>
 			<Header>
 				<AppName>
-					<MovieImage src="/images (1).png" />
+					<MovieImage
+						src={`${process.env.PUBLIC_URL}/images (1).png`}
+						alt="Movie Icon"
+					/>
 					Movie Search Engine
 				</AppName>
 				<SearchBox>
-					<SearchIcon src="/images.png" />
+					<SearchIcon
+						src={`${process.env.PUBLIC_URL}/images.png`}
+						alt="Search Icon"
+					/>
 					<SearchInput
 						placeholder="Search Movie"
 						value={searchQuery}
@@ -122,7 +127,10 @@ function App() {
 						/>
 					))
 				) : (
-					<Placeholder src="/images.png" />
+					<Placeholder
+						src={`${process.env.PUBLIC_URL}/images.png`}
+						alt="Placeholder"
+					/>
 				)}
 			</MovieListContainer>
 		</Container>
